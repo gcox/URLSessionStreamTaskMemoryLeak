@@ -35,20 +35,6 @@ struct ContentView: View {
   var body: some View {
     VStack(spacing: 50) {
       VStack {
-        Text("CFNetwork Streamer")
-        HStack {
-          Button(streamWithCFNetworkTitle) {
-            streamRunner.runCFNetworkStreamer()
-            activeStreamer = .cfNetwork
-          }
-          Button("Read") {
-            streamRunner.readBytes()
-          }
-          .disabled(activeStreamer != .cfNetwork)
-        }
-      }
-
-      VStack {
         Text("URLSession Streamer")
         HStack {
           Button(streamWithURLSessionTitle) {
@@ -59,6 +45,20 @@ struct ContentView: View {
             streamRunner.readBytes()
           }
           .disabled(activeStreamer != .urlSession)
+        }
+      }
+
+      VStack {
+        Text("CFNetwork Streamer")
+        HStack {
+          Button(streamWithCFNetworkTitle) {
+            streamRunner.runCFNetworkStreamer()
+            activeStreamer = .cfNetwork
+          }
+          Button("Read") {
+            streamRunner.readBytes()
+          }
+          .disabled(activeStreamer != .cfNetwork)
         }
       }
 
